@@ -57,7 +57,7 @@ async function binarySearch(searchWord) {
     let data = await getMinMax();
     let min = data.min;
     let max = data.max;
-    let t = 0;
+    let r = 0;
 
     while (min <= max) {
         let middle = Math.floor((min + max) / 2);
@@ -67,18 +67,18 @@ async function binarySearch(searchWord) {
         switch (true) {
             case comp > 0:
                 min = middle + 1;
-                serverReqAndTime(t);
+                serverReqAndTime(r);
                 break;
             case comp < 0:
                 max = middle - 1;
-                serverReqAndTime(t);
+                serverReqAndTime(r);
                 break;
             case comp == 0:
                 return entry;
             default:
                 break;
         }
-        t++;
+        r++;
     }
     return -1;
 }
@@ -97,8 +97,8 @@ function compare(a, b) {
     return a.localeCompare(b.inflected)
 }
 
-function serverReqAndTime(t) {
-    document.querySelector("#server_req").innerHTML = "server request time: " + t + " seconds";
+function serverReqAndTime(r) {
+    document.querySelector("#server_req").innerHTML = "server request time: " + r + " seconds";
 
 }
 
